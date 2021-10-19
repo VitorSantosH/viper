@@ -1,18 +1,24 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { Link } from 'react-router-dom'
-
+import api from '../services/api'
 
 
 export default props => {
 
     const payload = JSON.parse(localStorage.getItem('payload')) || false
 
-    
+    function logout() {
+
+        localStorage.payload = null
+        localStorage.token = null
+        window.location.href = api.baseURL
+
+    }
     function verifyUser() {
         if (payload) {
             return (
                 <div style={{ color: "white" }}>
-                    
+
                     <i class="fa fa-user"></i>
 
                     <span>{payload.name}</span>
@@ -20,7 +26,7 @@ export default props => {
             )
         } else {
             return (
-                <Link to={`/login`}>
+                <Link to={`/login_cadastro`}>
                     <i className="fa fa-user-o" aria-hidden="true" style={{ color: "white" }}></i>
                 </Link>
             )
@@ -50,16 +56,23 @@ export default props => {
                         <li className="nav-item">
                             <a className="nav-link disabled">Disabled</a>
                         </li>
-                        <li>
-                            {verificado}
-                        </li>
+
                     </ul>
-                    <div style={{ minWidth: '500px', display: 'block' }}>
+                    <div>
+                        {verificado}
+                        <button className='btn form-control' style={{color:"white"}} onClick={e => logout()}>
+                            Sair
+                        </button>
+                    </div>
+
+
+
+                    {/*   <div >
 
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" style={{ maxWidth: '250px' }} />
                         <button className="btn btn-outline-success my-2 my-sm-0" style={{ float: 'right' }} type="submit">Search</button>
                     </div>
-
+                 */}
                 </div>
             </div>
         </nav>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import api from "../services/api";
+import { Link } from "react-router-dom"
 
 
 export default props => {
@@ -10,7 +11,7 @@ export default props => {
     const [telefoneValue, setTelefoneValue] = useState('')
     const [senhaValue, setSenhaValue] = useState('')
 
-    
+
     function enviar(e) {
         api.post(`/user/cadastro`, {
             name: nomeValue,
@@ -111,9 +112,11 @@ export default props => {
 
                         </form>
                     </div>
-                {/*    <button className='btn form-control' onClick={e => {
-                        props.setCadastroOuLogin(e.target.value)
-                    }} value={'login'} >Já possuo uma conta</button> */}
+
+                    <Link to="/login">
+                        <button className='btn form-control'>Já possuo uma conta</button>
+                    </Link>
+                  
                 </div>
             </div>
 

@@ -1,11 +1,24 @@
-import React, { useEffect, useState } from "react";
-//import api from "../services/api";
-//import config from '../config/auth'
-import Login from "./Login";
-import Cadastro from "./Cadastro";
+import React from "react";
+import { Link } from 'react-router-dom'
 
 
+export default (props) => {
 
+    return (
+        <div>
+            <Link to="/cadastro">
+                <button className='btn form-control'>Cadastrar</button>
+            </Link>
+
+            <Link to="/login">
+                <button className='btn form-control'>Fazer Login</button>
+            </Link>
+
+        </div>
+    )
+}
+
+/*
 export default props => {
 
 
@@ -15,11 +28,11 @@ export default props => {
 
 
 
-   
 
 
 
-    
+
+
 
     function UserMenu() {
         if (cadastroOuLogin == false) {
@@ -49,3 +62,6 @@ export default props => {
     )
 
 }
+*/
+
+

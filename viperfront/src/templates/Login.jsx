@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import api from '../services/api'
+import { Link } from "react-router-dom"
 
 
 
@@ -34,7 +35,7 @@ export default props => {
                 localStorage.setItem('token', JSON.stringify(res.data.token))
             }
 
-            window.location.href = '/#/'
+            window.location.href = api.baseURL
 
 
 
@@ -80,9 +81,10 @@ export default props => {
 
                         </form>
                     </div>
-                   {/*    <button className='btn form-control' onClick={e => {
-                        props.setCadastroOuLogin(e.target.value)
-                    }} value={'login'} >Já possuo uma conta</button> */}
+                    <Link to="/cadastro">
+                        <button className='btn form-control' >Já possuo uma conta</button>
+                    </Link>
+
                 </div>
             </div>
 
